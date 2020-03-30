@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Documentation.
+{% endblock %}
+
+{% block main %}
+  <div class="text-left">
+   <a href="/" class="btn btn-warning">Back to SQuASH</a>
+  </div>
+  <div>
+    <img src="static/SquashText001.png">
+  </div>
+  <br><br>
+  <div class="text-left">
+    <h3>What is SQuASH:</h3>
+    <p>
+      SQuASH is a simple tool for counting and graphing reddit submissions.<br>
+      Enter a subreddit, a date range, and one or more search terms to create a graph.<br>
+      SQuASH was made as a final project for <a href="https://www.edx.org/course/cs50s-introduction-to-computer-science">cs50</a>, an introductory course to computer programming.
+    </p>
+    <h3>How it works:</h3>
+    <p>
+      SQuASH passes users inputs to <a href="https://pushshift.io/">pushshift.io</a> and counts the results. It then creates a graph of these results
+      using <a href="https://matplotlib.org/">matplotlib</a>, and displays the graph as HTML using <a href="https://pypi.org/project/mpld3/">Mpld3.</a>
+    </p>
+    <h3>Limitations:</h3>
+    <p>
+      Querying the pushshift database is a pretty slow process.
+      Each individual query seems to take around 1.3 seconds to return.
+      If you have multiple search terms over a long time period this can add up pretty quickly, but an alert should
+      display giving estimates of extended query times.
+      <br>
+      Another limitation when accessing the pushshift database is that there is a maximum of 1000 results on any individual
+      query, which is quickly met when analysing the more popular subreddits.
+      <br>
+      These limitations are presumably a result of the massive size and the public availability of the pushshift database, and
+      are exacerbated by the inefficient manner in which SqUASH uses this data.
+      <br>
+      Both these limitations became obvious fairly early on in the project, and serious consideration was given to taking SQuASH
+      in a different direction because of them. Obviously having its own much smaller database of reddit content - say focusing on one specific
+      subreddit - would allow SQuASH quicker query times and more maximum results. In the end, though, the appeal of flexibility
+      which comes with the massive size of the pushshift database, limitations and all, outweighed these concerns.
+    </p>
+    <h3>Intentions and Flaws:</h3>
+    <p>
+      The intention behind this project was to create a tool to understand what the users of a particular subreddit thought about
+      a subject and how this thinking changed over time. A seemingly simple concept, but it quickly gets complicated when you think
+      about it in detail. How do you measure a subreddit's interest in a subject? Counting submissions seems like a good place to start,
+      but how do you factor in a post's popularity as reflected in it's votes? Then there's the comments section, how does the amount of
+      comments on a submission affect such a measure? And how then do you then factor in votes-on-comments?
+      <br>
+      These cascading concerns quickly seemed to push the project beyond the scope of what was required by the course, to say nothing
+      of my abilities as a programmer, so I went ahead and ignored them. According to SQuASH, all submissions are equal and none
+      are ignored. Given these rather fundamental conceptual flaws, the project can hardly be said to work as originally intended. However
+      I personally learned a lot making it, and think it's pretty nifty.
+    </p>
+    <h3>Support:</h3>
+      <p>
+      This project relies on the generous work of the folks over at <a href="https://pushshift.io/">pushshift.io</a>. It could not function without their publicly available
+      data.<br> <a href="https://pushshift.io/donations/">If you're feeling generous please support them.</a>
+    </p>
+    <h3>Feedback:</h3>
+      <p>
+      <a href="https://www.reddit.com/r/squash_app/">SQuASH has its own subreddit!</a> Stop by and tell me what you think!
+      </p>
+  </div>
+  <div class="text-centre">
+   <a href="/" class="btn btn-warning">Back to SQuASH</a>
+ </div>
+{% endblock %}

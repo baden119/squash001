@@ -1,0 +1,115 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block main %}
+  <div class="container" align="left">
+    <a href="/documentation" class="btn btn-warning" role="button">Documentation</a>
+  </div>
+ <img src="static/SquashText001.png">
+ <form action="/" id="generate" method="post">
+    <div class="container" align="center">
+        /r/
+        <input id="subreddit" name="subreddit" placeholder="Subreddit" type="text">
+      </div>
+      <div>
+    <br>
+    <div class="container" align="center">
+      <label for="start_date">Start Date:</label>
+        <input type="date" id="start_date" name="start_date" min="2017-01-01">
+    </div>
+    <br>
+    <div class="container" align="center">
+      <label for="end_date">End Date:</label>
+        <input type="date" id="end_date" name="end_date" min="2017-01-02">
+    </div>
+    <div class="container" align="center">
+        <label class="radio-inline">
+          <input type="radio" name="term_period" value="day" checked> Day
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="term_period" value="week"> Week
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="term_period" value="month">Month
+        </label>
+    </div>
+
+    <br>
+    <div class="container" id="searchTermBox" align="center">
+      <input name="searchTerm0" id="searchTerm0" placeholder="Search Term 0" type="text">
+    </div>
+    <div class="container" align="center">
+      <button class="btn btn-warning" id="addSearchTerm" type="button">Add Another Search Term</button>
+    </div>
+    <br>
+    <div class="container" align="center">
+      <button class="btn btn-warning" id="generate_button" type="submit">Generate!</button>
+    </div>
+  </form>
+  <div style="height:400px"></div>
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+  <script>
+
+    let field_count = 1;
+    let generate_button = document.getElementById('generate_button')
+
+    addSearchTerm.onclick = function(){
+      let newSearchTerm = document.createElement('div');
+      let newBox = '<input name="searchTerm' + field_count + '" placeholder="Search Term ' + field_count + '" type="text">';
+      newSearchTerm.innerHTML = newBox;
+      document.getElementById("searchTermBox").appendChild(newSearchTerm);
+      field_count++;
+      return field_count;
+    };
+
+    $("#generate_button").click(function(event) {
+      event.preventDefault();
+      let start_date = $("#start_date").val();
+      let end_date = $("#end_date").val();
+      let term_period = $("input:radio[name=term_period]:checked").val()
+      let subreddit = $("#subreddit").val();
+
+      // Error Checking
+      if (!subreddit) {
+        alert("Enter Subreddit.");
+        return;
+      }
+
+      if (!start_date) {
+        alert("Enter a Start Date.");
+        return;
+      }
+
+      if (!end_date) {
+        alert("Enter an End Date.");
+        return;
+      }
+
+      // Query duration alerts
+      $.ajax({
+        data : {start_date: start_date, end_date: end_date, field_count: field_count, term_period: term_period},
+        type : 'GET',
+        url : '/check'
+            })
+            .done(function(data) {
+              if (data == false){
+                $("#generate").submit();
+              }
+              else {
+                alert(data)
+                $("#generate").submit();
+              }
+            });
+    });
+  </script>
+{% endblock %}

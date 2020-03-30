@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Squash!
+{% endblock %}
+
+{% block main %}
+      <div class="container" align="left">
+        <a href="/" class="btn btn-warning">Back to SQuASH</a>
+        <a href="/documentation" class="btn btn-warning">Documentation</a>
+      </div>
+      <div class="text-center">
+        {{ html_graph|safe }}
+      </div>
+
+{% endblock %}

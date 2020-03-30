@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Printo!
+{% endblock %}
+
+{% block main %}
+    {% if message %}
+      <h1> {{ message }}</h1>
+    {% else %}
+      <h1>No Message</h1>
+    {% endif %}
+
+
+{% endblock %}
