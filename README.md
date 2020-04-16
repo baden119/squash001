@@ -36,14 +36,8 @@ reflection of where i'm at in terms of programming ability after taking cs50.<br
 All going well I hope to take the follow-up CS50 web development course soon, and hopefully as I continue
 to learn I will be able to improve SQuASH as well!
 </p>
-<h3>Github</h3>
-If you're interested in looking at my code, <a href="https://github.com/baden119/squash001">you can see it here!</a>
 <h3>Support:</h3>
 <p>
 This project relies on the generous work of the folks over at <a href="https://pushshift.io/">pushshift.io</a>. It could not function without their publicly available
 data.<br> <a href="https://pushshift.io/donations/">If you're feeling generous please support them.</a>
 </p>
-</div>
-<div class="text-centre">
-<a href="/" class="btn btn-warning">Back to SQuASH</a>
-</div>
