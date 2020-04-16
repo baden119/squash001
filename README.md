@@ -1,3 +1,18 @@
+<h1>SQuASH</h1>
+<h2>Simple Quantative Analyzer of Submission History</h2>
+<h3>What is SQuASH:</h3>
+<p>
+SQuASH is a simple tool for counting and graphing reddit submissions.<br>
+Enter a search term, a date range, and one or more subreddits to create a graph.<br>
+SQuASH was made as a final project for <a href="https://www.edx.org/course/cs50s-introduction-to-computer-science">cs50</a>, an introductory course to computer programming.<br>
+<br>
+Examples Graphs:
+<br>
+<a class="thumb" target="_blank" href="static/New Squash Notre Dame.png">
+  <img src="static/New Squash Notre Dame.png" alt="Notre Dame" style="width:150px"></a>
+<a class="thumb" target="_blank" href="static/New Squash Garrett.png">
+  <img src="static/New Squash Garrett.png" alt="Garrett" style="width:150px"></a><br>
+</p>
 <h3>How it works:</h3>
 <p>
 SQuASH passes users inputs to <a href="https://pushshift.io/">pushshift.io</a> and counts the results. It then creates a graph of these results
