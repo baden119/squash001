@@ -8,13 +8,13 @@
   <div class="container" align="left">
     <a href="/documentation" class="btn btn-warning" role="button">Documentation</a>
   </div>
- <img src="static/SquashText001.png">
+ <img class="banner" src="static/SquashText001.png">
  <form action="/" id="generate" method="post">
     <div class="container" align="center">
-        /r/
-        <input id="subreddit" name="subreddit" placeholder="Subreddit" type="text">
+        Term to search:
+        <br>
+        <input id="searchTerm" name="searchTerm" placeholder="i.e 'bananas'" type="text">
       </div>
-      <div>
     <br>
     <div class="container" align="center">
       <label for="start_date">Start Date:</label>
@@ -38,11 +38,12 @@
     </div>
 
     <br>
-    <div class="container" id="searchTermBox" align="center">
-      <input name="searchTerm0" id="searchTerm0" placeholder="Search Term 0" type="text">
+    <div class="container" id="subredditBox" align="center">
+      /r/
+      <input name="subreddit0" id="subreddit0" placeholder="Subreddit 0" type="text">
     </div>
     <div class="container" align="center">
-      <button class="btn btn-warning" id="addSearchTerm" type="button">Add Another Search Term</button>
+      <button class="btn btn-warning" id="addSubreddit" type="button">Add Another Subreddit</button>
     </div>
     <br>
     <div class="container" align="center">
@@ -63,11 +64,11 @@
     let field_count = 1;
     let generate_button = document.getElementById('generate_button')
 
-    addSearchTerm.onclick = function(){
-      let newSearchTerm = document.createElement('div');
-      let newBox = '<input name="searchTerm' + field_count + '" placeholder="Search Term ' + field_count + '" type="text">';
-      newSearchTerm.innerHTML = newBox;
-      document.getElementById("searchTermBox").appendChild(newSearchTerm);
+    addSubreddit.onclick = function(){
+      let newSubreddit = document.createElement('div');
+      let newBox = '/r/ <input name="subreddit' + field_count + '" placeholder="Subreddit ' + field_count + '" type="text">';
+      newSubreddit.innerHTML = newBox;
+      document.getElementById("subredditBox").appendChild(newSubreddit);
       field_count++;
       return field_count;
     };
@@ -77,11 +78,11 @@
       let start_date = $("#start_date").val();
       let end_date = $("#end_date").val();
       let term_period = $("input:radio[name=term_period]:checked").val()
-      let subreddit = $("#subreddit").val();
+      let searchTerm = $("#searchTerm").val();
 
       // Error Checking
-      if (!subreddit) {
-        alert("Enter Subreddit.");
+      if (!searchTerm) {
+        alert("Enter a term to search for.");
         return;
       }
 
@@ -106,8 +107,13 @@
                 $("#generate").submit();
               }
               else {
-                alert(data)
-                $("#generate").submit();
+                let r = confirm(data);
+                if (r == true) {
+                  $("#generate").submit();
+                } else {
+                  return;
+                }
+
               }
             });
     });
