@@ -2,9 +2,8 @@
 Simple Quantative Analyzer of Sumbission History
 
 
-    <h3>How it works:</h3>
-    <p>
-      SQuASH passes users inputs to <a href="https://pushshift.io/">pushshift.io</a> and counts the results. It then creates a graph of these results
+#How it works:
+SQuASH passes users inputs to <a href="https://pushshift.io/">pushshift.io</a> and counts the results. It then creates a graph of these results
       using <a href="https://matplotlib.org/">matplotlib</a>, and displays the graph as HTML using <a href="https://pypi.org/project/mpld3/">Mpld3.</a>
     </p>
     <h3>Problems:</h3>
