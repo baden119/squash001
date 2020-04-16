@@ -1,5 +1,6 @@
 <h1>SQuASH</h1>
 <h2>Simple Quantative Analyzer of Submission History</h2>
+<h2>https://squash001.herokuapp.com/</h2>
 <h3>What is SQuASH:</h3>
 <p>
 SQuASH is a simple tool for counting and graphing reddit submissions.<br>
